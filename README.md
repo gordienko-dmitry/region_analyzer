@@ -4,6 +4,10 @@
 This is rest API for analyze citizens data.  
 We have strong rules for citizen fields, you can read it below.  
 
+## REALIZATION  
+This API maked with async technology.  
+For web-server used aiohttp package, for postgresql used asyncpg package.  
+
 ## DEPOYMENT  
 If you use ubuntu 18 you can do this actions:  
 ```  
@@ -21,7 +25,7 @@ For testing uses pytest & pytest_async packages
  
 You can run tests:  
 ```
-/home/venv/bin/python pytest -v  
+pytest -v  
 ```  
 
 # REST METHODS:  
@@ -40,7 +44,7 @@ Format input json:
     "town": "Москва",
     "street": "Льва Толстого",
     "building": "16к7стр5",
-    "appartement": 7,
+    "apartment": 7,
     "name": "Иванов Иван Иванович",
     "birth_date": "01.02.2000",
     "gender": "male",
@@ -67,7 +71,7 @@ Validation rules:
 *town* - str, not NULL, not empty  
 *street* - str, not NULL, not empty  
 *building* - str, not NULL, not empty  
-*appartement* - int, not NULL, not empty  
+*apartment* - int, not NULL, not empty  
 *name* - str, not NULL, not empty  
 *birth_date* - str, not NULL, not empty, str of date in format "dd.mm.yyyy"  
 *gender* - str, not NULL, not empty, can be only "male" or "female"  
@@ -100,7 +104,7 @@ HTTP 200
       "town": "Керчь",
       "street": "Иосифа Бродского",
       "building": "16к7стр5",
-      "appartement": 7,
+      "apartment": 7,
       "name": "Иванов Иван Иванович",
       "birth_date": "01.02.2000",
       "gender": "male",
@@ -118,7 +122,7 @@ vars from url (import_id & citizen_id) must be int and there must be citizen in 
 *town* - str, not NULL, not empty  
 *street* - str, not NULL, not empty  
 *building* - str, not NULL, not empty  
-*appartement* - int, not NULL, not empty  
+*apartment* - int, not NULL, not empty  
 *name* - str, not NULL, not empty  
 *birth_date* - str, not NULL, not empty, str of date in format "dd.mm.yyyy"  
 *gender* - str, not NULL, not empty, can be only "male" or "female"  
@@ -142,7 +146,7 @@ HTTP 200
     "town": "Москва",
     "street": "Льва Толстого",
     "building": "16к7стр5",
-    "appartement": 7,
+    "apartment": 7,
     "name": "Иванов Иван Иванович",
     "birth_date": "01.02.2000",
     "gender": "male",
