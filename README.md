@@ -1,20 +1,20 @@
 # REGION ANALYZER
-*Test excersize from Yandex Backend School*
+*Test exercise from Yandex Backend School*
   
 This is rest API for analyze citizens data.  
-We have strong rules for citizen fields, you can read it below.  
+We have strong validation rules for citizen fields, you can read it below.
 
 ## REALIZATION  
-This API maked with async technology.  
+This API made with async technology.
 For web-server used aiohttp package, for postgresql used asyncpg package.  
 
-## DEPOYMENT  
+## DEPLOYMENT
 If you use ubuntu 18 you can do this actions:  
 ```  
 apt-get update && apt-get upgrade  
 apt-get -y install git  
 cd /home  
-git clone https://github.com/NorthenFox/hasker.git  
+git clone https://github.com/NorthenFox/region_analyzer.git
 apt-get install make  
 cd region_analyzer   
 make prod  
@@ -231,4 +231,43 @@ HTTP 200
 Validation rules:  
 var from url (import_id) must be int and there must be citizens in DB with that import_id  
 
-If validation is breaking we got 400 error enstead 200. 
+If validation is breaking we got 400 error enstead 200.
+
+
+## PROJECT STRUCTURE & PROGRAMMING STUFF
+
+I use aiohttp web server, postresql & asincpg, pytest for testing.
+I thought it would be interesting make api with async libraries.
+
+For deploy used nginx and supervisor, connection between nginx and program by sock files.
+
+Structure and files:
+```
+region_analyzer/
+... runner.py - enter point of api, starting web server, adding handlers
+... prepare.py - start migrate script
+... test_rest.py - functional tests
+... api/
+... ... __init__.py
+... ... classes.py - class citizen and validation code
+... ... handlers.py - handlers middleware
+... ... logic.py - logic of program, runs from handlers, check input data, and call sql methods
+... ... settings.py - base settings of this project, you can change them for your project
+... ... help_text.py - message, that returns, when you call GET '<ip&port>/'
+... ... test_api.py - unit tests for api
+... ... orm/
+... ... ... __init__.py
+... ... ... migrate.py - migrate code (creating tables, indexes, import data)
+... ... ... middleware.py - main module in this folder, as orm logic
+... ... ... queries.py - texts of sql queries for different destinations
+... ... ... sql.py - low level interaction with database
+... ... ... test_orm.py - unit tests for sql
+
+... Makefile - instructions for make command
+... requirements.txt - python packages for this project
+... deployment/ - settings files for deployment
+... ... pg_hba.conf - file with some corrections for postgresql
+... ... r_analyzer_ng.conf - nginx setting file
+... ... r_analyzer_sp.conf - supervisor settings file
+... README.md - descriptions file
+```
