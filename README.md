@@ -22,6 +22,10 @@ cd region_analyzer
 make prod  
 ```
 
+Make sure your user have necessary permissions for log folder, for sock files etc, if you want to make auto installing.
+And user www-data have necessary permission. It used in nginx and supervisor confs.   
+
+
 ## TESTING  
 For testing uses pytest & pytest_async packages  
  
