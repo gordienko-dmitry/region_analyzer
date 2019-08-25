@@ -20,13 +20,13 @@ prod:
 	echo done
 
 	echo "Configure app..."
-	-venv/bin/python3 prepare_db.py
+	-python3 prepare_db.py
 	echo done
 
 	echo "Supervisor"
 	-mkdir /var/log/r_analyzer
 	pip3 install supervisor
-	sudo apt-get install supervisor
+	sudo apt-get -y install supervisor
 	sudo service supervisor restart
 	cp ./deployment/r_analyzer_sp.conf /etc/supervisor/conf.d/
 	sudo supervisorctl reread
@@ -37,3 +37,4 @@ prod:
 	sudo apt-get install -y nginx
 	cp ./deployment/r_analyzer_ng.conf /etc/nginx/conf.d/
 	sudo service nginx start
+	sudo service nginx restart

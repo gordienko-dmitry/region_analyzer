@@ -15,7 +15,7 @@ sudo apt-get update && apt-get upgrade
 sudo apt-get -y install git
 sudo apt-get install make
 cd /home  
-git clone https://github.com/NorthenFox/region_analyzer.git  
+git clone https://github.com/NorthenFox/region_analyzer.git
 cd region_analyzer   
 make prod  
 ```
