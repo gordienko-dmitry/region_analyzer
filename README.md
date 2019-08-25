@@ -11,11 +11,11 @@ For web-server used aiohttp package, for postgresql used asyncpg package.
 ## DEPLOYMENT
 If you use ubuntu 18 you can do this actions:  
 ```  
-apt-get update && apt-get upgrade  
-apt-get -y install git  
+sudo apt-get update && apt-get upgrade
+sudo apt-get -y install git
+sudo apt-get install make
 cd /home  
-git clone https://github.com/NorthenFox/region_analyzer.git
-apt-get install make  
+git clone https://github.com/NorthenFox/region_analyzer.git  
 cd region_analyzer   
 make prod  
 ```
