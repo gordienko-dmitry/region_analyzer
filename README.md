@@ -16,6 +16,8 @@ sudo apt-get -y install git
 sudo apt-get install make
 cd /home  
 git clone https://github.com/NorthenFox/region_analyzer.git
+    for private repo you need put your user:password before github:
+    git clone https://user:password@github.com/NorthenFox/region_analyzer.git
 cd region_analyzer   
 make prod  
 ```
